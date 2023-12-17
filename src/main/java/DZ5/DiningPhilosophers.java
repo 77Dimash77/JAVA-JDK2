@@ -3,7 +3,7 @@ package DZ5;
 import java.util.concurrent.Semaphore;
 
 class Philosopher extends Thread {
-    private static Semaphore semaphore = new Semaphore(2); // Допускаем 2 философа одновременно
+    private static Semaphore semaphore = new Semaphore(2);
 
     private int id;
     private int eatCount;
@@ -18,11 +18,11 @@ class Philosopher extends Thread {
     }
 
     private void eat() throws InterruptedException {
-        semaphore.acquire(); // Пытаемся получить разрешение на обед
+        semaphore.acquire();
         System.out.println("Philosopher " + id + " is eating (count: " + (eatCount + 1) + ")");
         eatCount++;
-        Thread.sleep(500); // Время приема пищи
-        semaphore.release(); // Освобождаем разрешение после обеда
+        Thread.sleep(500);
+        semaphore.release();
     }
 
     @Override
